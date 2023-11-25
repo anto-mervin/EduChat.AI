@@ -37,7 +37,7 @@ function App() {
       url: "https://open-ai21.p.rapidapi.com/chatmpt",
       headers: {
         "content-type": "application/json",
-        "X-RapidAPI-Key": "1dc30f65abmsh357c08a916d8610p1900dbjsn9f5b017be462",
+        "X-RapidAPI-Key": "2655023316msh89d84fa3e655124p162812jsn78fdc70620fe",
         "X-RapidAPI-Host": "open-ai21.p.rapidapi.com",
       },
       data: { message: `${data}` },
