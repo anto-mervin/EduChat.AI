@@ -26,7 +26,7 @@ function App() {
         messages: [
           {
             role: "user",
-            content: "hello",
+            content: { data },
           },
         ],
         web_access: false,
