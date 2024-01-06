@@ -8,62 +8,46 @@ function App() {
 
   const sendMessage = async (message) => {
     const role =
-      "Act as a tutor and provide me answer related the topic... question:";
+      "Act as a tutor and provide me answer related the only related to python within 100 words question:";
     const content = message.message;
     const data = role.concat(" ", content);
     console.log(data);
     await Promise.resolve(setChat((prev) => [...prev, message]));
 
-    // const options = {
-    //   method: "POST",
-    //   url: "https://open-ai21.p.rapidapi.com/conversationllama",
-    //   headers: {
-    //     "content-type": "application/json",
-    //     "X-RapidAPI-Key": "1dc30f65abmsh357c08a916d8610p1900dbjsn9f5b017be462",
-    //     "X-RapidAPI-Host": "open-ai21.p.rapidapi.com",
-    //   },
-    //   data: {
-    //     messages: [
-    //       {
-    //         role: "user",
-    //         content: `${data}`,
-    //       },
-    //     ],
-    //   },
-    // };
-
     const options = {
       method: "POST",
-      url: "https://open-ai21.p.rapidapi.com/chatmpt",
+      url: "https://open-ai21.p.rapidapi.com/conversationgpt35",
       headers: {
         "content-type": "application/json",
-        "X-RapidAPI-Key": "2655023316msh89d84fa3e655124p162812jsn78fdc70620fe",
+        "X-RapidAPI-Key": "2b60b7ade8mshbf690e38a18cc79p1ef769jsn61b2a3640058",
         "X-RapidAPI-Host": "open-ai21.p.rapidapi.com",
       },
-      data: { message: `${data}` },
+      data: {
+        messages: [
+          {
+            role: "user",
+            content: "hello",
+          },
+        ],
+        web_access: false,
+        system_prompt: "",
+        temperature: 0.9,
+        top_k: 5,
+        top_p: 0.9,
+        max_tokens: 256,
+      },
     };
 
     try {
       const response = await axios.request(options);
-      console.log(response.data.MPT);
+      console.log(response.data);
       setChat((prev) => [
         ...prev,
-        { sender: "ai", message: response.data.MPT },
+        { sender: "ai", message: response.data.result },
       ]);
     } catch (error) {
       console.error(error);
     }
-
-    // try {
-    //   const response = await axios.request(options);
-    //   console.log(response.data.BOT);
-    //   setChat((prev) => [
-    //     ...prev,
-    //     { sender: "ai", message: response.data.BOT },
-    //   ]);
-    // } catch (error) {
-    //   console.error(error);
-    // }
   };
 
   return (
