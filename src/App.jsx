@@ -56,7 +56,7 @@ function App() {
 
       {/* header */}
       <div className="uppercase font-bold  text-2xl text-center mb-3">
-        Learnify Chat
+        Learnity Chat
       </div>
       <div className="h-[100%] overflow-auto w-full max-w-4xl min-w-[20rem] py-8 px-4 self-center">
         <YoutubeEmbed />
